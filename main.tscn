@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://bdlsv6t6h86u3"]
+[gd_scene load_steps=10 format=3 uid="uid://bdlsv6t6h86u3"]
 
 [ext_resource type="PackedScene" uid="uid://bpbgwcytwxrjv" path="res://readyplayerme_avatar.glb" id="1_36ln1"]
 [ext_resource type="Script" path="res://main.gd" id="1_hq4hw"]
 [ext_resource type="Script" path="res://viseme_system.gd" id="2_gr58h"]
+[ext_resource type="Texture2D" uid="uid://couxqg4nub056" path="res://laughing.png" id="4_svpmi"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_e48u6"]
 viewport_path = NodePath("TextureRect/SubViewport")
@@ -138,6 +139,11 @@ offset_top = 405.0
 offset_right = 384.0
 offset_bottom = 436.0
 text = "FirstPastThePost Single viseme"
+
+[node name="LaughingIcon" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.509804)
+position = Vector2(230, 56)
+texture = ExtResource("4_svpmi")
 
 [connection signal="toggled" from="MicWorking" to="." method="_on_mic_working_toggled"]
 

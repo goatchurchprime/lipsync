@@ -26,11 +26,23 @@ func _process(delta):
 					vv[i] = 1 if i == maxi else 0
 			$VisemeSystem.set_visemes(vv)
 
+			# final three values are:
+			#visemes[ovrLipSyncViseme_Count] = ovrlipsyncframe.laughterScore;
+			#visemes[ovrLipSyncViseme_Count+1] = ovrlipsyncframe.frameDelay;
+			#visemes[ovrLipSyncViseme_Count+2] = ovrlipsyncframe.frameNumber;
+
+			$LaughingIcon.modulate.a = vv[-3]
+			$LaughingIcon.visible = (vv[-3] > 0.1)
+
+			print("frame delay ", vv[-2], " n ", vv[-1])
+
+
 		else:
 			if $VisSelect.selected != -1 and $VisSelect.selected != 0:
 				var vv = $VisemeSystem.current_slider_values()
 				vv[$VisSelect.selected] = chunkv2
 				$VisemeSystem.set_visemes(vv)
+			$LaughingIcon.visible = false
 		audioopuschunkedeffect.drop_chunk()
 		n += 1
 	if n > 5:
