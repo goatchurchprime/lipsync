@@ -88,10 +88,10 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 4.041
-offset_left = 46.0
-offset_top = 8.0
-offset_right = 347.0
-offset_bottom = -37.64
+offset_left = 39.0
+offset_top = 33.0
+offset_right = 340.0
+offset_bottom = -12.64
 
 [node name="Viseme" type="HBoxContainer" parent="VisemeSystem/VBox"]
 layout_mode = 2
@@ -130,6 +130,14 @@ offset_left = 209.0
 offset_top = 378.0
 offset_right = 241.0
 offset_bottom = 398.0
+
+[node name="VisemeBinary" type="CheckButton" parent="."]
+layout_mode = 0
+offset_left = 97.0
+offset_top = 405.0
+offset_right = 384.0
+offset_bottom = 436.0
+text = "FirstPastThePost Single viseme"
 
 [connection signal="toggled" from="MicWorking" to="." method="_on_mic_working_toggled"]
 

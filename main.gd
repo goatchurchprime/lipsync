@@ -17,7 +17,15 @@ func _process(delta):
 		$ChunkMax.value = chunkv2*100
 		if $AudioStreamMicrophone.playing and audioopuschunkedeffect.chunk_to_lipsync() != -1:
 			var vv = audioopuschunkedeffect.read_visemes();
+			if $VisemeBinary.button_pressed:
+				var maxi = 0
+				for i in range(1, len(vv)-1):
+					if vv[i] > vv[maxi]:
+						maxi = i
+				for i in range(len(vv)-1):
+					vv[i] = 1 if i == maxi else 0
 			$VisemeSystem.set_visemes(vv)
+
 		else:
 			if $VisSelect.selected != -1 and $VisSelect.selected != 0:
 				var vv = $VisemeSystem.current_slider_values()
