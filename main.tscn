@@ -1,0 +1,136 @@
+[gd_scene load_steps=9 format=3 uid="uid://bdlsv6t6h86u3"]
+
+[ext_resource type="PackedScene" uid="uid://bpbgwcytwxrjv" path="res://readyplayerme_avatar.glb" id="1_36ln1"]
+[ext_resource type="Script" path="res://main.gd" id="1_hq4hw"]
+[ext_resource type="Script" path="res://viseme_system.gd" id="2_gr58h"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_e48u6"]
+viewport_path = NodePath("TextureRect/SubViewport")
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_6cmmm"]
+
+[sub_resource type="Sky" id="Sky_jw2o0"]
+sky_material = SubResource("ProceduralSkyMaterial_6cmmm")
+
+[sub_resource type="Environment" id="Environment_wu7ae"]
+background_mode = 2
+sky = SubResource("Sky_jw2o0")
+
+[sub_resource type="AudioStreamMicrophone" id="AudioStreamMicrophone_p7h2t"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_hq4hw")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 19.0
+offset_right = 452.0
+offset_bottom = 369.0
+texture = SubResource("ViewportTexture_e48u6")
+
+[node name="SubViewport" type="SubViewport" parent="TextureRect"]
+size = Vector2i(350, 350)
+
+[node name="Avatar" type="Node3D" parent="TextureRect/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.64525, 0.042281)
+
+[node name="readyplayerme_avatar" parent="TextureRect/SubViewport/Avatar" instance=ExtResource("1_36ln1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.662, -0.0980946)
+
+[node name="Skeleton3D" parent="TextureRect/SubViewport/Avatar/readyplayerme_avatar/Armature" index="0"]
+bones/9/rotation = Quaternion(-0.504936, -0.48948, 0.514703, -0.490439)
+bones/10/rotation = Quaternion(0.476682, 0.0426004, -0.0586192, 0.876084)
+bones/11/rotation = Quaternion(-0.0496499, 0.0232878, 0.220481, 0.973848)
+bones/13/rotation = Quaternion(0.168015, -0.00993266, 0.414887, 0.894171)
+bones/14/rotation = Quaternion(0.0505068, -0.0743272, -0.249844, 0.964107)
+bones/17/rotation = Quaternion(0.0907302, -0.0514911, 0.0710583, 0.992002)
+bones/22/rotation = Quaternion(0.127578, -0.00970948, 0.0430858, 0.990845)
+bones/23/rotation = Quaternion(0.201824, -0.022599, -0.0435925, 0.97819)
+bones/27/rotation = Quaternion(0.0390566, -0.00578875, 0.00189597, 0.999219)
+bones/29/rotation = Quaternion(0.0990383, -0.0710162, -0.155253, 0.980329)
+bones/30/rotation = Quaternion(0.121482, -0.210829, 0.0594756, 0.96812)
+bones/31/rotation = Quaternion(0.122705, -0.0119333, 0.0121579, 0.992297)
+bones/41/rotation = Quaternion(0.0907272, 0.0514874, -0.0710587, 0.992002)
+bones/46/rotation = Quaternion(0.127578, 0.00970743, -0.0430845, 0.990845)
+bones/51/rotation = Quaternion(0.0390606, 0.00579551, -0.00189742, 0.999218)
+bones/59/rotation = Quaternion(0.507441, 0.0166689, 0.00155898, 0.861524)
+bones/64/rotation = Quaternion(0.507441, -0.0166669, -0.0015554, 0.861524)
+
+[node name="Wolf3D_Teeth" parent="TextureRect/SubViewport/Avatar/readyplayerme_avatar/Armature/Skeleton3D" index="8"]
+blend_shapes/tongueOut = 0.02312
+blend_shapes/viseme_RR = 0.11561
+blend_shapes/viseme_U = -0.01156
+
+[node name="Camera3D" type="Camera3D" parent="TextureRect/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.65082, 0.298209)
+current = true
+fov = 20.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="TextureRect/SubViewport"]
+environment = SubResource("Environment_wu7ae")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="TextureRect/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.141939, 1.96601, 0.303695)
+
+[node name="VisemeSystem" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 21.0
+offset_top = 404.0
+offset_right = 75.0
+offset_bottom = 490.0
+script = ExtResource("2_gr58h")
+
+[node name="VBox" type="VBoxContainer" parent="VisemeSystem"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 4.041
+offset_left = 46.0
+offset_top = 8.0
+offset_right = 347.0
+offset_bottom = -37.64
+
+[node name="Viseme" type="HBoxContainer" parent="VisemeSystem/VBox"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VisemeSystem/VBox/Viseme"]
+layout_mode = 2
+
+[node name="HSlider" type="HSlider" parent="VisemeSystem/VBox/Viseme"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="AudioStreamMicrophone" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamMicrophone_p7h2t")
+autoplay = true
+bus = &"MicrophoneBus"
+
+[node name="MicWorking" type="CheckButton" parent="."]
+layout_mode = 0
+offset_left = 57.0
+offset_top = 372.0
+offset_right = 197.0
+offset_bottom = 403.0
+text = "MicWorking
+"
+
+[node name="ChunkMax" type="HSlider" parent="."]
+layout_mode = 0
+offset_left = 261.0
+offset_top = 371.0
+offset_right = 458.0
+offset_bottom = 414.0
+
+[node name="VisSelect" type="OptionButton" parent="."]
+layout_mode = 0
+offset_left = 209.0
+offset_top = 378.0
+offset_right = 241.0
+offset_bottom = 398.0
+
+[connection signal="toggled" from="MicWorking" to="." method="_on_mic_working_toggled"]
+
+[editable path="TextureRect/SubViewport/Avatar/readyplayerme_avatar"]

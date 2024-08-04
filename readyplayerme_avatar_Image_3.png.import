@@ -1,0 +1,39 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://bkkjbyfaq426k"
+path.s3tc="res://.godot/imported/readyplayerme_avatar_Image_3.png-7f871f831b34c91b5f387a44d33895e7.s3tc.ctex"
+path.etc2="res://.godot/imported/readyplayerme_avatar_Image_3.png-7f871f831b34c91b5f387a44d33895e7.etc2.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "c14f18de80f4280a8a8ec2e8727d1789"
+}
+
+[deps]
+
+source_file="res://readyplayerme_avatar_Image_3.png"
+dest_files=["res://.godot/imported/readyplayerme_avatar_Image_3.png-7f871f831b34c91b5f387a44d33895e7.s3tc.ctex", "res://.godot/imported/readyplayerme_avatar_Image_3.png-7f871f831b34c91b5f387a44d33895e7.etc2.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=1
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=1
+roughness/src_normal="res://readyplayerme_avatar_Image_3.png"
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0
