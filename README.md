@@ -5,6 +5,14 @@ This project runs in Godot4.3 and uses a version of https://github.com/goatchurc
 that is compiled against OVRLipSync, a library released by Oculus only on Windows and Android for 
 generating visemes from audio WAV data.
 
+`FirstPastThePost Single viseme` does a winner takes all filter where the viseme with the 
+highest score is set to 1 and all the others set to zero.  This makes the animation jerky, 
+but you can see the mouth formations (particularly of the consonants) more clearly.  
+In the future we could ease between these shapes and sync it properly with some delayed audio.
+
+Also, the laughter detection now makes an icon appear when it hits a threshold so you can test 
+it by laughing at it.
+
 On a platform without OVRLipSync you can tie the audio volume to a chosen viseme in the dropdown 
 to animate the face.
 

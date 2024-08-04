@@ -34,7 +34,7 @@ func _process(delta):
 			$LaughingIcon.modulate.a = vv[-3]
 			$LaughingIcon.visible = (vv[-3] > 0.1)
 
-			print("frame delay ", vv[-2], " n ", vv[-1])
+			#print("frame delay ", vv[-2], " n ", vv[-1])
 
 
 		else:
