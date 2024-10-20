@@ -8,14 +8,15 @@ func _ready():
 	for vs in $VisemeSystem.visemes:
 		$VisSelect.add_item(vs)
 		
+const chunkresampled = true
 func _process(delta):
 	$MicWorking.button_pressed = $AudioStreamMicrophone.playing
 	var n = 0
 	while audioopuschunkedeffect.chunk_available():
-		var chunkv1 = audioopuschunkedeffect.chunk_max()
-		var chunkv2 = audioopuschunkedeffect.chunk_rms()
+		var chunkv1 = audioopuschunkedeffect.chunk_max(false, chunkresampled)
+		var chunkv2 = audioopuschunkedeffect.chunk_max(true, chunkresampled)
 		$ChunkMax.value = chunkv2*100
-		if $AudioStreamMicrophone.playing and audioopuschunkedeffect.chunk_to_lipsync() != -1:
+		if $AudioStreamMicrophone.playing and audioopuschunkedeffect.chunk_to_lipsync(chunkresampled) != -1:
 			var vv = audioopuschunkedeffect.read_visemes();
 			if $VisemeBinary.button_pressed:
 				var maxi = 0
